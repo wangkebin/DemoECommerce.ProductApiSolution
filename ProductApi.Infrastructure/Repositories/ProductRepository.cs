@@ -46,7 +46,7 @@ public class ProductRepository(ProductDbContext context) : IProduct
         try
         {
             var product = await GetByIdAsync(entity.Id);
-            if (product is null || !string.IsNullOrEmpty(product.Name))
+            if (product is null || string.IsNullOrEmpty(product.Name))
             {
                 return new Response(false, $"Product with id {entity.Id} does not exists.");
             }
@@ -124,6 +124,7 @@ public class ProductRepository(ProductDbContext context) : IProduct
         try
         {
             var product = await context.Products.FindAsync(id);
+            context.Entry(product).State = EntityState.Detached;
             return product is not null ? product : null!;
         }catch (Exception ex)
         {

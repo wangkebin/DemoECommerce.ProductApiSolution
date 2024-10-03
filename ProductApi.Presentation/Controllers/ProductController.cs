@@ -12,12 +12,6 @@ namespace ProductApi.Presentation.Controllers
     [ApiController]
     public class ProductController(IProduct productInterface) : Controller
     {
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpPost]
         public async Task<ActionResult<Response>> CreateProduct(ProductDTO product)
         {
@@ -41,7 +35,7 @@ namespace ProductApi.Presentation.Controllers
 
         }
 
-        [HttpGet("{id int}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id)
         {
             var product = await productInterface.GetByIdAsync(id);
