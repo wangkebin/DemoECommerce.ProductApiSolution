@@ -46,9 +46,9 @@ public class ProductRepository(ProductDbContext context) : IProduct
         try
         {
             var product = await GetByIdAsync(entity.Id);
-            if (product is null && !string.IsNullOrEmpty(product.Name))
+            if (product is null || !string.IsNullOrEmpty(product.Name))
             {
-                return new Response(false, $"Product with id {product.Id} does not exists.");
+                return new Response(false, $"Product with id {entity.Id} does not exists.");
             }
 
             var currentProduct = context.Products.Update(entity).Entity;
@@ -115,7 +115,7 @@ public class ProductRepository(ProductDbContext context) : IProduct
             LogException.LogExceptions(ex);
 
             // return to client
-            return new Response(false, $"cannot get all products");
+            throw new Exception("cannot get all products");
         }
     }
 
@@ -131,7 +131,7 @@ public class ProductRepository(ProductDbContext context) : IProduct
             LogException.LogExceptions(ex);
             
             // return to client
-            return new Response(false, $"cannot locate product by id {id}");
+            throw new Exception( $"cannot locate product by id {id}");
         }
     }
 
@@ -148,7 +148,7 @@ public class ProductRepository(ProductDbContext context) : IProduct
             LogException.LogExceptions(ex);
 
             // return to client
-            return new Response(false, "Error retriving product");
+            throw new Exception("Error retriving product");
         }
         
     }

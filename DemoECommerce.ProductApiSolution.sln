@@ -1,12 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi.Domain", "ProductApi.Domain\ProductApi.Domain.csproj", "{9D4E1C5C-3634-4415-8949-0DE4EA35B018}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductApi.Domain", "ProductApi.Domain\ProductApi.Domain.csproj", "{9D4E1C5C-3634-4415-8949-0DE4EA35B018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi.Application", "ProductApi.Application\ProductApi.Application.csproj", "{B45ACF37-3D69-43AF-8BEB-F5C0117B407D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductApi.Application", "ProductApi.Application\ProductApi.Application.csproj", "{B45ACF37-3D69-43AF-8BEB-F5C0117B407D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi.Infrastructure", "ProductApi.Infrastructure\ProductApi.Infrastructure.csproj", "{15E88AC7-250D-4BCD-803B-FE9CF4719222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductApi.Infrastructure", "ProductApi.Infrastructure\ProductApi.Infrastructure.csproj", "{15E88AC7-250D-4BCD-803B-FE9CF4719222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.SharedLibrary", "..\DemoECommerce.SharedLibrarySolution\eCommerce.SharedLibrary\eCommerce.SharedLibrary.csproj", "{6E96EE74-5B9A-4230-8D73-AB76C0F6803D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.SharedLibrary", "..\DemoECommerce.SharedLibrarySolution\eCommerce.SharedLibrary\eCommerce.SharedLibrary.csproj", "{6E96EE74-5B9A-4230-8D73-AB76C0F6803D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi.Presentation", "ProductApi.Presentation\ProductApi.Presentation.csproj", "{83BEBB77-120A-4088-954F-CACEF06951E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +35,12 @@ Global
 		{6E96EE74-5B9A-4230-8D73-AB76C0F6803D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E96EE74-5B9A-4230-8D73-AB76C0F6803D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E96EE74-5B9A-4230-8D73-AB76C0F6803D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83BEBB77-120A-4088-954F-CACEF06951E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83BEBB77-120A-4088-954F-CACEF06951E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83BEBB77-120A-4088-954F-CACEF06951E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83BEBB77-120A-4088-954F-CACEF06951E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

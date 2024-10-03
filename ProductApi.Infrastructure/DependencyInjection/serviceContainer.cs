@@ -18,15 +18,15 @@ public static class serviceContainer
         
         // crete Dependency Injection
         services.AddScoped<IProduct, ProductRepository>();
-        
-        return services
+
+        return services;
     }
 
     public static IApplicationBuilder UseInfrastructurePolicy(this IApplicationBuilder app)
     {
         // Register middlewares
         // Global Exception
-        // Listen to Only API Gateway: 
+        // Listen to Only API Gateway: blocks all outside calls
         SharedServiceContainer.UseSharedPolicies(app);
         
         return app;
