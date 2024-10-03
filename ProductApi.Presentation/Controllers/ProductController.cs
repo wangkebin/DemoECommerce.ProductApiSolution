@@ -18,6 +18,16 @@ namespace ProductApi.Presentation.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Response>> CreateProduct(ProductDTO product)
+        {
+            var prod = product.ToProduct();
+            var response = await productInterface.CreateAsync(prod);
+            if (response is null) return BadRequest("failed to created product");
+            return response.Flag? Ok(response) : BadRequest("failed to create product");
+            
+            
+        }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
         {
@@ -42,26 +52,24 @@ namespace ProductApi.Presentation.Controllers
             return _prod is not null ? Ok(_prod) : NotFound($"No product found with id {id}");
         }
 
-        [HttpDelete("{id int}")]
-        public async Task<ActionResult<Response>> DeleteProduct(int id)
-        {
-
-            var response = await productInterface.DeleteAsync(new Product { Id=id});
-            if (response is null) {
-                return NotFound($"No product found with id {id} in data");
-            }
-            return response.Flag ? Ok(response) : NotFound($"No product found with id {id}");
-
-        }
-
+        
         [HttpPut]
         public async Task<ActionResult<Response>> UpdateProduct(ProductDTO product)
         {
-            var prod = ProductConversion.ToProduct(product);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var prod = product.ToProduct();
             var response = await productInterface.UpdateAsync(prod);
-            if (response is null) return NotFound($"No product found with id {product.Id} in data");
             return response.Flag ? Ok(response) : BadRequest($"No matching product to update");
         }
+        
+        [HttpDelete]
+        public async Task<ActionResult<Response>> DeleteProduct(ProductDTO product)
+        {
+            var prod = product.ToProduct();
+            var response = await productInterface.DeleteAsync(prod);
+            return response.Flag ? Ok(response) : NotFound($"No product found with id {product.Id}");
+        }
+
     }
 
 
