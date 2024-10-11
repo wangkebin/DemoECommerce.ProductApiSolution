@@ -11,6 +11,8 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY["../../DemoECommerce.SharedLibrarySolution/.", "eCommerce.SharedLibrarycsproj"]
+COPY[
 COPY ["ProductApi.Presentation/ProductApi.Presentation.csproj", "ProductApi.Presentation/"]
 RUN dotnet restore "./ProductApi.Presentation/ProductApi.Presentation.csproj"
 COPY . .
